@@ -1,7 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/env bash
 # set up nginx
 
-apt update
+apt update -y
 apt install -y nginx
 
 mkdir -p /data/web_static/releases/test/
