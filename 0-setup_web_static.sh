@@ -1,22 +1,22 @@
 #!/usr/bin/python3
 # set up nginx
 
-sudo apt-get update
-sudo apt-get -y install nginx
+apt update
+apt install -y nginx
 
-sudo mkdir -p /data/web_static/releases/test/
-sudo mkdir -p /data/web_static/shared/
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
 
 echo "<html>
   <head></head>
   <body>
     Nginx test page!
   </body>
-</html>" | sudo tee /data/web_static/releases/test/index.html
+</html>" | tee /data/web_static/releases/test/index.html
 
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-sudo chown -R ubuntu:ubuntu /data/
+chown -R ubuntu:ubuntu /data/
 
 location="\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n"
 
