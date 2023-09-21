@@ -1,195 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>AirBnB clone</title>
-
-		<link rel="shortcut icon" href="images/icon.ico" >
-
-		<link rel="stylesheet" href="styles/4-common.css"/>
-		<link rel="stylesheet" href="styles/3-header.css"/>
-		<link rel="stylesheet" href="styles/3-footer.css"/>
-		<link rel="stylesheet" href="styles/6-filters.css"/>
-		<link rel="stylesheet" href="styles/100-places.css"/>
-	</head>
-    <body>
-		<header>
-			<div id="header_logo"></div>
-		</header>
-		<div class="container">
-			<section class="filters">
-				<button>Search</button>
-				<div class="locations">
-					<h3>States</h3>
-					<h4>California, Arizona...</h4>
-					<ul class="popover">
-						<li><h2>Arizona</h2>
-							<ul>
-								<li><h4>Page</h4></li>
-								<li><h4>Page2</h4></li>
-							</ul></li>
-						<li><h2>California</h2>
-							<ul>
-								<li><h4>San Francisco</h4></li>
-								<li><h4>Los Altos</h4></li>
-							</ul></li>
-					</ul>
-				</div>
-				<div class="filter_amenities">
-					<h3>Amenities</h3>
-					<h4>Internet, Kitchen...</h4>
-					<ul class="popover">
-						<li><h4>Internet</h4></li>
-						<li><h4>TV</h4></li>
-						<li><h4>Kitchen</h4></li>
-						<li><h4>Iron</h4></li>
-					</ul>
-				</div>
-
-			</section>
-			<section class="places">
-				<h1>Places</h1>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">My home</h2>
-						<div class="price_by_night">$80</div>
-					</div>
-					<div class="information">
-						<div class="max_guest">
-							<div class="guest_icon"></div>
-							<p>2 Guests</p>
-						</div>
-						<div class="number_rooms">
-							<div class="bed_icon"></div>
-							<p>1 Bedroom</p>
-						</div>
-						 <div class="number_bathrooms">
-							<div class="bath_icon"></div>
-							<p>1 Bathroom</p>
-						</div>
-					</div>
-					<div class="user"><b>Owner</b>: John Lennon</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-					<div class="amenities">
-						<h2 class="article_subtitle">Amenities</h2>
-						<ul>
-							<li><div class="tv_icon"></div>TV</li>
-							<li><div class="wifi_icon"></div>Wifi</li>
-							<li><div class="pet_icon"></div>Pet friendly</li>
-						</ul>
-					</div>
-					<div class="reviews">
-						<h2 class="article_subtitle">Reviews</h2>
-						<ul>
-							<li>
-								<div class="review_item">
-									<h3>From Bob Dylan the 27th January 2017</h3>
-									<p class="review_text">Wow, what can I say?! I'm a real rolling stone, you may have heard, but - by golly - I'd just as well settle down in this humble home, if you'd part with it - course, I'm sure you wouldn't. Real shame too. Oh well...</p>
-								</div>
-							</li>
-							<li>
-								<div class="review_item">
-									<h3>From Justin Majetich the 28th April 1991</h3>
-									<p class="review_text">I was birthed in this here bathtub today!</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">Tiny house</h2>
-						<div class="price_by_night">$65</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>4 Guests</p>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>2 Bedroom</p>
-                        </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>1 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Adrienne</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="tv_icon"></div>TV</li>
-                            <li><div class="wifi_icon"></div>Wifi</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Bilbo Baggins the 6th June 2089</h3>
-                                	<p class="review_text">The place was spotless, and Adrienne was an excellent host, leaving fresh biscuits out for my ravenous arrival.</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">A suite</h2>
-						<div class="price_by_night">$180</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>5 Guests</p>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>3 Bedroom</p>
-                        </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>2 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Betty Holberton</div>
-					<div class="description">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="pet_icon"></div>Pet friendly</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Beyonce Knowles the 16th September 2013</h3>
-                                	<p class="review_text">Betty was a sweetheart. Jay, I and the kids thoroughly enjoyed out stay.</p>
-								</div>
-                            </li>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Julien Barbier the 1th August 2008</h3>
-                                	<p class="review_text">What a beautiful home! I had one of the best night's sleeps of my life and woke up with an idea!</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-			</section>
-		</div>
-		<footer>
-			<p>Holberton School</p>
-		</footer>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AirHBnB</title>
+    <link rel="stylesheet" href="styles/103-common.css" />
+    <link rel="stylesheet" href="styles/103-header.css" />
+    <link rel="stylesheet" href="styles/103-filters.css" />
+    <link rel="stylesheet" href="styles/103-footer.css" />
+    <link rel="stylesheet" href="styles/103-places.css" />
+    <link rel="icon" type="image/png" href="images/icon.png" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo"></div>
+    </header>
+    <main role="main" class="container">
+      <section class="filters" aria-label="Filter section">
+        <div class="locations" aria-label="Locations">
+          <h3>States</h3>
+          <h4>Colorado, Florida...</h4>
+          <ul class="popover">
+            <li>
+              <h3>Colorado</h3>
+              <ul>
+                <li>Denver</li>
+                <li>Aurora</li>
+              </ul>
+            </li>
+            <li>
+              <h3>Florida</h3>
+              <ul>
+                <li>Miami</li>
+                <li>Orlando</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="amenities" aria-label="Amenities">
+          <h3>Amenities</h3>
+          <h4>Internet, Kitchen...</h4>
+          <ul class="popover">
+            <li>Internet</li>
+            <li>TV</li>
+            <li>Kitchen</li>
+            <li>Jacuzzi</li>
+          </ul>
+        </div>
+        <button class="search-button">Search</button>
+      </section>
+      <section class="places" aria-label="List of places">
+        <h1>Places</h1>
+        <div class="places-list">
+          <!-- Article 1 -->
+          <article tabindex="0">
+            <header class="article-header">
+              <h2>My Home</h2>
+              <div class="price_by_night">$90</div>
+            </header>
+            <div class="information">
+              <div class="max_guest">
+                <div class="icon"></div>
+                <p>3 guests</p>
+              </div>
+              <div class="number_rooms">
+                <div class="icon"></div>
+                <p>1 bedroom</p>
+              </div>
+              <div class="number_bathrooms">
+                <div class="icon"></div>
+                <p>2 bathrooms</p>
+              </div>
+            </div>
+            <div class="description">
+              <div class="user"><strong>Owner:</strong> Ai Hoshino</div>
+              <p>
+                Welcome to our cozy retreat! This charming house is perfect for
+                your stay, offering a serene and comfortable environment for you
+                to unwind and relax. The house boasts 1 spacious bedroom,You'll
+                also have access to 2 modern and well-appointed bathrooms.
+              </p>
+            </div>
+            <div class="article-amenities">
+              <div class="article-amenities-header">
+                <h2>Amenities</h2>
+              </div>
+              <ul>
+                <li>
+                  <div class="icon icon_jz"></div>
+                  <span>Jacuzzi </span>
+                </li>
+                <li>
+                  <div class="icon icon_tv"></div>
+                  <span> Tv </span>
+                </li>
+                <li>
+                  <div class="icon icon_wifi"></div>
+                  <span> Wifi </span>
+                </li>
+              </ul>
+            </div>
+            <div class="article-reviews">
+              <div class="article-reviews-header">
+                <h2>2 Reviews</h2>
+              </div>
+              <ul>
+                <li>
+                  <h3>From Bob Dylan the 27th January 2017</h3>
+                  <p>
+                    Such a wonderful place to stay! The house is beautifully
+                    decorated and has everything you need for a comfortable
+                    stay.
+                  </p>
+                </li>
+                <li>
+                  <h3>From Hijikata Toshiro the 20th January 2019</h3>
+                  <p>
+                    The surroundings are peaceful and serene, making it the
+                    perfect retreat for relaxation. Highly recommended!
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </article>
+          <!-- Article 2 -->
+          <article tabindex="0">
+            <header class="article-header">
+              <h2>Tiny House</h2>
+              <div class="price_by_night">$75</div>
+            </header>
+            <div class="information">
+              <div class="max_guest">
+                <div class="icon"></div>
+                <p>4 guests</p>
+              </div>
+              <div class="number_rooms">
+                <div class="icon"></div>
+                <p>2 bedroom</p>
+              </div>
+              <div class="number_bathrooms">
+                <div class="icon"></div>
+                <p>1 bathrooms</p>
+              </div>
+            </div>
+            <div class="description">
+              <div class="user"><strong>Owner:</strong> Sakata Gintoki</div>
+              <p>
+                charming tiny house nestled in a tranquil setting. This cozy
+                retreat boasts two comfortably appointed bedrooms, perfect for
+                accommodating up to four guests. The well-designed layout
+                includes a modern bathroom with all the essentials to ensure a
+                refreshing stay.
+              </p>
+            </div>
+            <div class="article-amenities">
+              <div class="article-amenities-header">
+                <h2>Amenities</h2>
+              </div>
+              <ul>
+                <li>
+                  <div class="icon icon_pets"></div>
+                  <span>Sadaharu </span>
+                </li>
+                <li>
+                  <div class="icon icon_coffee"></div>
+                  <span>coffee maker</span>
+                </li>
+                <li>
+                  <div class="icon icon_wifi"></div>
+                  <span> Wifi </span>
+                </li>
+              </ul>
+            </div>
+            <div class="article-reviews">
+              <div class="article-reviews-header">
+                <h2>1 Reviews</h2>
+              </div>
+              <ul>
+                <li>
+                  <h3>From Katsura Kotaru the 14th Jully 2023</h3>
+                  <p>
+                    It's not just a place to stay; it's a base for like-minded
+                    souls, fighting for a better world. For all fellow Joui
+                    warriors out there, this sanctuary comes highly recommended
+                    - Zura ja nai, Katsura da!
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </article>
+          <!-- Article 3 -->
+          <article tabindex="0">
+            <header class="article-header">
+              <h2>A Suite</h2>
+              <div class="price_by_night">$220</div>
+            </header>
+            <div class="information">
+              <div class="max_guest">
+                <div class="icon"></div>
+                <p>5 guests</p>
+              </div>
+              <div class="number_rooms">
+                <div class="icon"></div>
+                <p>3 bedroom</p>
+              </div>
+              <div class="number_bathrooms">
+                <div class="icon"></div>
+                <p>2 bathrooms</p>
+              </div>
+            </div>
+            <div class="description">
+              <div class="user"><strong>Owner:</strong> Zino-Chan</div>
+              <p>
+                Step into luxury and sophistication with our exquisite suite.
+                Elegantly designed and thoughtfully curated, this spacious
+                retreat offers a haven of comfort and style. The suite features
+                a plush king-size bed, adorned with premium linens, promising
+                restful nights of blissful sleep. Indulge in the opulent
+                bathroom, featuring a deep soaking tub and a separate rain
+                shower, offering the ultimate relaxation experience.
+              </p>
+            </div>
+            <div class="article-amenities">
+              <div class="article-amenities-header">
+                <h2>Amenities</h2>
+              </div>
+              <ul>
+                <li>
+                  <div class="icon icon_jz"></div>
+                  <span>Jacuzzi </span>
+                </li>
+                <li>
+                  <div class="icon icon_pool"></div>
+                  <span>Swimming pool</span>
+                </li>
+                <li>
+                  <div class="icon icon_washer"></div>
+                  <span>Washer</span>
+                </li>
+              </ul>
+            </div>
+            <div class="article-reviews">
+              <div class="article-reviews-header">
+                <h2>1 Reviews</h2>
+              </div>
+              <ul>
+                <li>
+                  <h3>From Iori Kitahara the 21th Jully 2023</h3>
+                  <p>
+                    I felt like I entered a whole new world of relaxation and
+                    luxury. It's like diving into a sea of comfort! The ambiance
+                    was totally on point, creating the perfect atmosphere for
+                    kicking back and chilling with your buddies.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>Best School</footer>
+  </body>
 </html>

@@ -1,13 +1,25 @@
 body {
-	margin:0px;
-	padding:0px;
-
-	color: #484848;
-	font-size: 14px;
-	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #484848;
+  font-size: 14px;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
-    max-width: 1000px;
-    margin: 30px auto;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 1em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0;
+  }
 }
