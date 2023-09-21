@@ -63,3 +63,11 @@ def do_deploy(archive_path):
     except Exception as e:
         print("Error:", e)
         return False
+
+def deploy():
+    """Create and distributes archive to web servers"""
+    try:
+        path = do_pack()
+        return do_deploy(path)
+    except:
+        return False
