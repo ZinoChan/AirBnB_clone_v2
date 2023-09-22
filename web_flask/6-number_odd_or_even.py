@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Simple Flask web application"""
 
-from flask import Flask, abort
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -33,14 +33,26 @@ def display_py(text):
     return "Python {}".format(text)
 
 
-@app.route("/number/<n>", strict_slashes=False)
-def display_num(n):
-    """Display 'n' is number if n is int."""
-    try:
-        int_n = int(n)
-        return "{} is a number".format(int_n)
-    except ValueError:
-        abort(404)
+@app.route("/number/<int:n>", strict_slashes=False)
+def is_number(n):
+    """Display n is a number only if n is an integer."""
+    return "{} is a number".format(n)
+
+
+@app.route("/number_template/<int:n>", strict_slashes=False)
+def number_template(n):
+    """Display a HTML page only if n is an integer."""
+    return render_template("5-number.html", number=n)
+
+
+@app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
+def number_odd_or_even(n):
+    if n % 2 == 0:
+        result = "even"
+    else:
+        result = "odd"
+    return render_template("6-number_odd_or_even.html",
+                           number=n, result=result)
 
 
 if __name__ == "__main__":
