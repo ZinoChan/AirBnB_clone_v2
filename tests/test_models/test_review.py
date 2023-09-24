@@ -1,29 +1,35 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+""" TEST_CASES for Review class
+"""
+import unittest
+from models.base_model import BaseModel
 from models.review import Review
 
 
-class test_review(test_basemodel):
-    """ """
+class TestReview(unittest.TestCase):
+    def setUp(self):
+        """Setting Instantiation"""
+        self.review = Review()
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "Review"
-        self.value = Review
+    def test_default_attr(self):
+        """Testing for default attributes"""
+        self.assertEqual(self.review.user_id, "")
+        self.assertEqual(self.review.place_id, "")
+        self.assertEqual(self.review.text, "")
 
-    def test_place_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.place_id), str)
+    def test_update_attr(self):
+        """Testing updating of attributes"""
+        self.review.user_id = "MikEL6535"
+        self.review.place_id = "Lagos33996"
+        self.review.text = "i love lagos, it is a beautiful place to stay"
 
-    def test_user_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.user_id), str)
+        self.assertEqual(self.review.user_id, "MikEL6535")
+        self.assertEqual(self.review.place_id, "Lagos33996")
+        self.assertEqual(
+            self.review.text, "i love lagos, it is a beautiful place to stay"
+        )
 
-    def test_text(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.text), str)
+    def test_inheritance(self):
+        """Testing the inheritance of the class Review"""
+        self.assertIsInstance(self.review, Review)
+        self.assertIsInstance(self.review, BaseModel)

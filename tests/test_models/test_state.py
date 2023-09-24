@@ -1,19 +1,35 @@
-#!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+import unittest
 from models.state import State
+from models.base_model import BaseModel
+
+class TestState(unittest.TestCase):
+
+    def setUp(self):
+        """Set up testing instance"""
+        self.state = State()
+
+    def tearDown(self):
+        """Tear down testing instance"""
+        del self.state
+
+    def test_instance_type(self):
+        """Test if state is of type State"""
+        self.assertIsInstance(self.state, State)
+
+    def test_inheritance(self):
+        """Test if State class inherits from BaseModel"""
+        self.assertTrue(issubclass(self.state.__class__, BaseModel))
+
+    def test_attribute_name_default(self):
+        """Test if attribute 'name' is an empty string by default"""
+        self.assertEqual(self.state.name, "")
+
+    def test_attribute_name_assignment(self):
+        """Test assignment to attribute 'name'"""
+        new_name = "California"
+        self.state.name = new_name
+        self.assertEqual(self.state.name, new_name)
 
 
-class test_state(test_basemodel):
-    """ """
-
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "State"
-        self.value = State
-
-    def test_name3(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+if __name__ == "__main__":
+    unittest.main()

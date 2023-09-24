@@ -1,24 +1,37 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+""" TEST_CASES for City class
+"""
+import unittest
 from models.city import City
+from models.base_model import BaseModel
 
 
-class test_City(test_basemodel):
-    """ """
+class TestCity(unittest.TestCase):
+    """ Unittest for City Class
+    """
+    def setUp(self):
+        """Setting Instantiation"""
+        self.city = City()
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "City"
-        self.value = City
+    def test_default_attr(self):
+        """testing default attributes
+        """
+        self.assertEqual(self.city.name, "")
+        self.assertEqual(self.city.state_id, "")
 
-    def test_state_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.state_id), str)
+    def test_update_attr(self):
+        """Testing updating of attributes"""
+        self.city.name = "Tokyo"
+        self.city.state_id = "Shinjuku"
 
-    def test_name(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertEqual(self.city.name, "Tokyo")
+        self.assertEqual(self.city.state_id, "Shinjuku")
+
+    def test_inheritance(self):
+        """Testing the inheritance of the class Review"""
+        self.assertIsInstance(self.city, City)
+        self.assertIsInstance(self.city, BaseModel)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
+import os
 
 
 class FileStorage:
@@ -11,23 +12,19 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if cls:
-            return self._filter_obj_by_cls(cls)
-        else:
-            return self.__objects
+        return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
-        self.all().update({obj.to_dict()["__class__"] + "." + obj.id: obj})
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         """Saves storage dictionary to file"""
-        with open(FileStorage.__file_path, "w") as f:
-            temp = {}
-            temp.update(FileStorage.__objects)
-            for key, val in temp.items():
-                temp[key] = val.to_dict()
-            json.dump(temp, f)
+        with open(self.__file_path, "w") as f:
+            json_dict = {key: value.to_dict() for key,
+                         value in self.__objects.items()}
+            json.dump(json_dict, f)
 
     def delete(self, obj=None):
         """del obj if not none"""
@@ -45,7 +42,7 @@ class FileStorage:
         from models.amenity import Amenity
         from models.review import Review
 
-        classes = {
+        list_of_classes = {
             "BaseModel": BaseModel,
             "User": User,
             "Place": Place,
@@ -54,20 +51,16 @@ class FileStorage:
             "Amenity": Amenity,
             "Review": Review,
         }
-        try:
-            temp = {}
-            with open(FileStorage.__file_path, "r") as f:
-                temp = json.load(f)
-                for key, val in temp.items():
-                    self.all()[key] = classes[val["__class__"]](**val)
-        except FileNotFoundError:
-            pass
-
-    def _filter_obj_by_cls(self, cls):
-        """Filter objects by class and return a dictionary"""
-        filtered_objects = {}
-        for key, obj in self.__objects.items():
-            class_name, instance_id = key.split(".")
-            if class_name == cls.__name__:
-                filtered_objects[key] = obj
-        return filtered_objects
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, "r") as f:
+                json_dict = json.load(f)
+            self.__objects = {}
+            for key, value in json_dict.items():
+                class_name = value["__class__"]
+                value.pop("__class__", None)
+                if class_name in list_of_classes:
+                    cls = list_of_classes[class_name]
+                    obj = cls(**value)
+                    self.__objects[key] = obj
+        else:
+            return
