@@ -70,11 +70,15 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             """Returns the list of Amenity instances based on amenity_ids."""
-            return self.amenity_ids
+            from models import storage
+
+            return [storage.get(Amenity, amenity_id)
+                    for amenity_id in self.amenity_ids]
 
         @amenities.setter
         def amenities(self, obj):
             """Handles append method for adding an Amenity.id
             to amenity_ids."""
-            if type(obj) is Amenity and obj.id not in self.amenity_ids:
+
+            if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)
