@@ -50,6 +50,23 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         new_instance = self.allowed_classes[args[0]]()
+        for attribute_arg in args[1:]:
+            key_value = attribute_arg.split("=", 1)
+            if len(key_value) != 2:
+                continue
+            key, value = key_value
+            if value[0] == '"' and value[-1] == '"':
+                value = value[1:-1].replace('_', ' ').replace('\\"', '"')
+            else:
+                try:
+                    if '.' in value:
+                        value = float(value)
+                    else:
+                        value = int(value)
+                except ValueError:
+                    continue
+            setattr(new_instance, key, value)
+
         new_instance.save()
         print(new_instance.id)
 
@@ -228,4 +245,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
