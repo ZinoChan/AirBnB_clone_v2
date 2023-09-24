@@ -6,6 +6,7 @@ from sqlalchemy import Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
 from os import getenv
+from models.amenity import Amenity
 
 place_amenity = Table(
     "place_amenity",
@@ -47,11 +48,13 @@ class Place(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place",
                                cascade="all, delete")
-        amenities = relationship("Amenity", secondary=place_amenity,
-                                 back_populates="place_amenities", viewonly=False)
-
+        amenities = relationship(
+            "Amenity", secondary=place_amenity,
+            back_populates="places", viewonly=False
+        )
 
     else:
+
         @property
         def reviews(self):
             """Returns the list of Review instances with place_id
@@ -69,6 +72,7 @@ class Place(BaseModel, Base):
         def amenities(self):
             """Returns the list of Amenity instances based on amenity_ids."""
             return self.amenity_ids
+
         @amenities.setter
         def amenities(self, obj):
             """Handles append method for adding an Amenity.id
