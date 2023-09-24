@@ -48,12 +48,11 @@ class Place(BaseModel, Base):
 
     if getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place",
-                               cascade="all, delete-orphan")
+                               cascade="all, delete")
         amenities = relationship("Amenity",
                                  secondary="place_amenity", viewonly=False)
 
     else:
-
         @property
         def reviews(self):
             """Returns the list of Review instances with place_id
