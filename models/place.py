@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table, MetaData
+from sqlalchemy import Column, String, Integer
+from sqlalchemy import Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.amenity import Amenity
 from models.review import Review
@@ -71,7 +72,8 @@ class Place(BaseModel, Base):
             """Returns the list of Amenity instances based on amenity_ids."""
             from models import storage
 
-            return [storage.get(Amenity, amenity_id) for amenity_id in self.amenity_ids]
+            return [storage.get(Amenity, amenity_id)
+                    for amenity_id in self.amenity_ids]
 
         @amenities.setter
         def amenities(self, obj):
