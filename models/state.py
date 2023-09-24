@@ -11,20 +11,20 @@ class State(BaseModel, Base):
     """State class"""
 
     __tablename__ = "states"
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        name = Column(String(128), nullable=False)
+        cities = relationship("City", backref="state",
+                            cascade="all, delete-orphan")
+    else:
+        @property
+        def cities(self):
+            """Returns list of City instances with state_id
+            equal to current State.id"""
 
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref="state",
-                          cascade="all, delete-orphan")
-
-    @property
-    def cities(self):
-        """Returns list of City instances with state_id
-        equal to current State.id"""
-
-        from models import storage
-        all_cities = storage.all(City)
-        state_cities = []
-        for city in all_cities.values():
-            if city.state_id == self.id:
-                state_cities.append(city)
-        return state_cities
+            from models import storage
+            all_cities = storage.all(City)
+            state_cities = []
+            for city in all_cities.values():
+                if city.state_id == self.id:
+                    state_cities.append(city)
+            return state_cities

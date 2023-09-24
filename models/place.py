@@ -4,15 +4,12 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer
 from sqlalchemy import Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from models.amenity import Amenity
 from models.review import Review
 from os import getenv
 
-metadata = Base.metadata
-
 place_amenity = Table(
     "place_amenity",
-    metadata,
+    Base.metadata,
     Column(
         "place_id",
         String(60),
@@ -50,8 +47,9 @@ class Place(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place",
                                cascade="all, delete")
-        amenities = relationship("Amenity",
-                                 secondary="place_amenity", viewonly=False)
+        amenities = relationship("Amenity", secondary=place_amenity,
+                                 back_populates="place_amenities", viewonly=False)
+
 
     else:
         @property
@@ -70,15 +68,10 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             """Returns the list of Amenity instances based on amenity_ids."""
-            from models import storage
-
-            return [storage.get(Amenity, amenity_id)
-                    for amenity_id in self.amenity_ids]
-
+            return self.amenity_ids
         @amenities.setter
         def amenities(self, obj):
             """Handles append method for adding an Amenity.id
             to amenity_ids."""
-
             if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)
