@@ -79,3 +79,4 @@ class Place(BaseModel, Base):
             to amenity_ids."""
             if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)
+    __table_args__ = {"mysql_engine": "InnoDB", "mysql_charset": "latin1"}

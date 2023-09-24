@@ -4,13 +4,14 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from os import getenv
-from models.city import City
 
 
 class State(BaseModel, Base):
     """State class"""
 
     __tablename__ = "states"
+
+
     if getenv("HBNB_TYPE_STORAGE") == "db":
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state",
@@ -24,9 +25,12 @@ class State(BaseModel, Base):
 
             from models import storage
 
+            from models.city import City
             all_cities = storage.all(City)
             state_cities = []
             for city in all_cities.values():
                 if city.state_id == self.id:
                     state_cities.append(city)
             return state_cities
+
+    __table_args__ = {"mysql_engine": "InnoDB", "mysql_charset": "latin1"}
