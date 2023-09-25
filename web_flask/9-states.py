@@ -11,8 +11,7 @@ app = Flask(__name__)
 
 @app.route("/states", strict_slashes=False)
 def states():
-    """Displays an HTML page with a list of all States.
-    """
+    """Displays an HTML page with a list of all States."""
     states = storage.all(State)
     return render_template("9-states.html", state=states)
 
@@ -30,6 +29,7 @@ def states_id(id):
 def teardown_db(exception=None):
     """Removes the current SQLAlchemy Session"""
     storage.close()
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
