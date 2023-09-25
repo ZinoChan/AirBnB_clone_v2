@@ -52,6 +52,8 @@ ul.popover {
   border-radius: 0 0 4px 4px;
   padding: 0;
   z-index: 99;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 ul.popover h3 {

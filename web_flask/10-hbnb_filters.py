@@ -2,6 +2,8 @@
 """Starts a Flask web application"""
 from models import storage
 from flask import Flask, render_template
+from models.state import State
+from models.amenity import Amenity
 
 app = Flask(__name__)
 
@@ -9,10 +11,10 @@ app = Flask(__name__)
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
     """Display a HTML page like 6-index.html."""
-    states = sorted(storage.all("State").values(), key=lambda x: x.name)
-    cities = sorted(storage.all("City").values(), key=lambda x: x.name)
-    amenities = sorted(storage.all("Amenity").values(), key=lambda x: x.name)
-    return render_template("10-hbnb_filters.html", states=states, cities=cities, amenities=amenities)
+    states = storage.all(State)
+    amenities = storage.all(Amenity)
+    return render_template("10-hbnb_filters.html",
+                           states=states, amenities=amenities)
 
 
 @app.teardown_appcontext
