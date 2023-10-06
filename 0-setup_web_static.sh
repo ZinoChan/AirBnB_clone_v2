@@ -5,33 +5,8 @@ apt-get update
 apt-get -y install nginx
 
 
-# Incoming HTTP fix
-sudo ufw allow 'Nginx HTTP'
-
-
-sudo chmod -R 755 /var/www
-
-sudo mkdir /data/
-chown -R ubuntu:ubuntu /data/
-
-
-# Creating directories and pages
-sudo mkdir -p /var/www/html/ /var/www/error
-sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
-sudo touch /var/www/html/index.nginx-debian.html
-
-
-sudo rm -fr /data/web_static/current
-
-sudo ln -fs /data/web_static/releases/test/ /data/web_static/current
-
-
-
-# Adding the string
-echo 'Holberton School' > /var/www/html/index.nginx-debian.html
-
-# Setting up a custom 404 page message
-echo -e "Ceci n'est pas une page" > /var/www/html/error_404.html
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
 
 echo -e "<html>
   <head>
@@ -41,6 +16,9 @@ echo -e "<html>
   </body>
 </html>" > /data/web_static/releases/test/index.html
 
+sudo ln -fs /data/web_static/releases/test/ /data/web_static/current
+
+chown -R ubuntu:ubuntu /data/
 
 echo -e "server {
     listen 80 default_server;
