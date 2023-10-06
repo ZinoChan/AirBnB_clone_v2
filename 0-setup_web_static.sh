@@ -12,8 +12,7 @@ sudo ufw allow 'Nginx HTTP'
 sudo chmod -R 755 /var/www
 
 sudo mkdir /data/
-sudo chown -hR ubuntu /data/
-sudo chgrp -hR ubuntu /data/
+chown -R ubuntu:ubuntu /data/
 
 
 # Creating directories and pages
